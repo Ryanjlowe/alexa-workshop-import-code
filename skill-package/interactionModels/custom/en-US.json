@@ -1,0 +1,139 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "change me",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "hello",
+                        "how are you",
+                        "say hi world",
+                        "say hi",
+                        "hi",
+                        "say hello world",
+                        "say hello"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                  "name": "AMAZON.FallbackIntent",
+                  "samples": []
+                }
+            ],
+            "types": [
+              {
+                "values": [
+                  {
+                    "id": "en:nuts",
+                    "name": {
+                      "value": "Nuts"
+                    }
+                  },
+                  {
+                    "id": "en:soybeans",
+                    "name": {
+                      "value": "Soybeans"
+                    }
+                  },
+                  {
+                    "id": "en:none",
+                    "name": {
+                      "value": "None"
+                    }
+                  },
+                  {
+                    "id": "en:sesame-seeds",
+                    "name": {
+                      "value": "Sesame seeds"
+                    }
+                  },
+                  {
+                    "id": "en:celery",
+                    "name": {
+                      "value": "Celery"
+                    }
+                  },
+                  {
+                    "id": "en:milk",
+                    "name": {
+                      "value": "Milk"
+                    }
+                  },
+                  {
+                    "id": "en:lupin",
+                    "name": {
+                      "value": "Lupin"
+                    }
+                  },
+                  {
+                    "id": "en:sulphur-dioxide-and-sulphites",
+                    "name": {
+                      "value": "Sulphur dioxide and sulphites"
+                    }
+                  },
+                  {
+                    "id": "en:peanuts",
+                    "name": {
+                      "value": "Peanuts"
+                    }
+                  },
+                  {
+                    "id": "en:mustard",
+                    "name": {
+                      "value": "Mustard"
+                    }
+                  },
+                  {
+                    "id": "en:molluscs",
+                    "name": {
+                      "value": "Molluscs"
+                    }
+                  },
+                  {
+                    "id": "en:eggs",
+                    "name": {
+                      "value": "Eggs"
+                    }
+                  },
+                  {
+                    "id": "en:gluten",
+                    "name": {
+                      "value": "Gluten"
+                    }
+                  },
+                  {
+                    "id": "en:crustaceans",
+                    "name": {
+                      "value": "Crustaceans"
+                    }
+                  },
+                  {
+                    "id": "en:fish",
+                    "name": {
+                      "value": "Fish"
+                    }
+                  }
+                ],
+                "name": "allergens"
+              },
+            ]
+        }
+    }
+  }
