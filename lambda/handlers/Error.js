@@ -16,5 +16,6 @@ const ErrorHandler = {
             .reprompt(speakOutput)
             .getResponse();
     }
+};
 
 module.exports = ErrorHandler;
