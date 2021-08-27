@@ -1,7 +1,7 @@
 {
   "name": "Allergen Detector Workshop",
   "version": "1.1.0",
-  "description": "a starter template for the Allergen Detector Workshop,
+  "description": "a starter template for the Allergen Detector Workshop",
   "main": "index.js",
   "scripts": {
     "test": "jest",
