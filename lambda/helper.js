@@ -26,47 +26,50 @@ const getResolvedWordsAC = function(handlerInput, slot) {
       handlerInput.requestEnvelope.request.apiRequest.slots &&
       handlerInput.requestEnvelope.request.apiRequest.slots[slot] &&
       handlerInput.requestEnvelope.request.apiRequest.slots[slot].value) {
-        return {name: handlerInput.requestEnvelope.request.apiRequest.slots[slot].value};
+        return {id: handlerInput.requestEnvelope.request.apiRequest.slots[slot].value};
     }
     return undefined;
 }
 
-const getShoppingListId = async function(handlerInput) {
-  // check session attributes to see if it has already been fetched
-  const attributesManager = handlerInput.attributesManager;
-  const sessionAttributes = attributesManager.getSessionAttributes();
-  let listId;
+const memoizeInSession = (sessionAttrKey, fn) => {
 
-  if (!sessionAttributes.shoppingListId) {
-    // lookup the id for the 'to do' list
+    return async (handlerInput, ...args) => {
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        return sessionAttrKey in sessionAttributes
+            ? sessionAttributes[sessionAttrKey]
+            : (
+                sessionAttributes[sessionAttrKey] = await fn(handlerInput, ...args),
+                handlerInput.attributesManager.setSessionAttributes(sessionAttributes),
+                Promise.resolve(sessionAttributes[sessionAttrKey])
+              );
+    }
+
+}
+
+const getShoppingListId = memoizeInSession('shoppingListId', async (handlerInput) => {
+
     const listClient = handlerInput.serviceClientFactory.getListManagementServiceClient();
     const listOfLists = await listClient.getListsMetadata();
-    console.log(JSON.stringify(listOfLists));
+    console.log('Found lists: ' + JSON.stringify(listOfLists));
+
     if (!listOfLists) {
       console.log('permissions are not defined');
       return null;
     }
-    for (let i = 0; i < listOfLists.lists.length; i += 1) {
-      console.log(`found ${listOfLists.lists[i].name} with id ${listOfLists.lists[i].listId}`);
-      const decodedListId = Buffer.from(listOfLists.lists[i].listId, 'base64').toString('utf8');
-      console.log(`decoded listId: ${decodedListId}`);
-      // The default lists (To-Do and Shopping List) list_id values are base-64 encoded strings with these formats:
-      //  <Internal_identifier>-TASK for the to-do list
-      //  <Internal_identifier>-SHOPPING_ITEM for the shopping list
-      // Developers can base64 decode the list_id value and look for the specified string at the end. This string is constant and agnostic to localization.
-      if (decodedListId.endsWith('-SHOPPING_ITEM')) {
-        // since we're looking for the default to do list, it's always present and always active
-        sessionAttributes.shoppingListId = listOfLists.lists[i].listId;
-        break;
-      }
-    }
-  }
-  console.log(JSON.stringify(handlerInput));
-  return sessionAttributes.shoppingListId;
-}
+
+    const foundList = listOfLists.lists.find((l) => Buffer.from(l.listId, 'base64').toString('utf8').endsWith('-SHOPPING_ITEM') );
+    console.log('Found Shopping List: ' + foundList.listId);
+
+    return foundList.listId;
+});
+
+
+const getLocale = (handlerInput) => handlerInput.requestEnvelope.request.locale;
 
 
 module.exports = {
   getResolvedWordsAC,
-  getShoppingListId
+  getShoppingListId,
+  getLocale,
+  memoizeInSession
 };

@@ -1,18 +1,20 @@
-const data = require("../data");
-const helper = require("../helper");
+/**
+ * Generic error handling to capture any syntax or routing errors. If you receive an error
+ * stating the request handler chain is not found, you have not implemented a handler for
+ * the intent being invoked or included it in the skill builder below
+ * */
+const ErrorHandler = {
+    canHandle() {
+        return true;
+    },
+    handle(handlerInput, error) {
+        const speakOutput = 'Sorry, I had trouble doing what you asked. Please try again.';
+        console.log(`~~~~ Error handled: ${JSON.stringify(error)}`);
 
-async function Error(handlerInput, error) {
-    console.log("<=== handlers/stopIntent.js ===>");
-    const locale = helper.getLocale(handlerInput);
-    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    sessionAttributes.isError = true;
-    console.log(`ERROR HANDLED: ${error.stack}`);
-    const speakOutput = "Jeff, there was an error."; //await data.getRandomSpeech("Error", locale);
-    const actionQuery = "What should we do now?"; //await data.getRandomSpeech("ActionQuery", locale);
-    return handlerInput.responseBuilder
-        .speak(`${speakOutput} ${actionQuery}`)
-        .reprompt(actionQuery)
-        .getResponse();
-}
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
+    }
 
-module.exports = Error;
+module.exports = ErrorHandler;
