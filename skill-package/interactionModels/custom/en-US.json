@@ -43,91 +43,91 @@
                   {
                     "id": "en:nuts",
                     "name": {
-                      "value": "Nuts"
+                      "value": "nuts"
                     }
                   },
                   {
                     "id": "en:soybeans",
                     "name": {
-                      "value": "Soybeans"
+                      "value": "soybeans"
                     }
                   },
                   {
                     "id": "en:none",
                     "name": {
-                      "value": "None"
+                      "value": "none"
                     }
                   },
                   {
                     "id": "en:sesame-seeds",
                     "name": {
-                      "value": "Sesame seeds"
+                      "value": "sesame seeds"
                     }
                   },
                   {
                     "id": "en:celery",
                     "name": {
-                      "value": "Celery"
+                      "value": "celery"
                     }
                   },
                   {
                     "id": "en:milk",
                     "name": {
-                      "value": "Milk"
+                      "value": "milk"
                     }
                   },
                   {
                     "id": "en:lupin",
                     "name": {
-                      "value": "Lupin"
+                      "value": "lupin"
                     }
                   },
                   {
                     "id": "en:sulphur-dioxide-and-sulphites",
                     "name": {
-                      "value": "Sulphur dioxide and sulphites"
+                      "value": "sulphur dioxide and sulphites"
                     }
                   },
                   {
                     "id": "en:peanuts",
                     "name": {
-                      "value": "Peanuts"
+                      "value": "peanuts"
                     }
                   },
                   {
                     "id": "en:mustard",
                     "name": {
-                      "value": "Mustard"
+                      "value": "mustard"
                     }
                   },
                   {
                     "id": "en:molluscs",
                     "name": {
-                      "value": "Molluscs"
+                      "value": "molluscs"
                     }
                   },
                   {
                     "id": "en:eggs",
                     "name": {
-                      "value": "Eggs"
+                      "value": "eggs"
                     }
                   },
                   {
                     "id": "en:gluten",
                     "name": {
-                      "value": "Gluten"
+                      "value": "gluten"
                     }
                   },
                   {
                     "id": "en:crustaceans",
                     "name": {
-                      "value": "Crustaceans"
+                      "value": "crustaceans"
                     }
                   },
                   {
                     "id": "en:fish",
                     "name": {
-                      "value": "Fish"
+                      "value": "fish"
                     }
                   }
                 ],

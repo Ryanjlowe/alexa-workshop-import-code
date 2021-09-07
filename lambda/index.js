@@ -6,7 +6,7 @@
 const Alexa = require('ask-sdk-core');
 
 const { LogRequestInterceptor, LogResponseInterceptor } = require('./interceptors');
-const { IntentReflectorHandler, ErrorHandler } = require('/handlers');
+const { IntentReflectorHandler, ErrorHandler } = require('./handlers');
 const { getResolvedWordsAC, getShoppingListId } = require('./helper');
 const { findFood, findSimilar } = require('./foodAPIService');
 
